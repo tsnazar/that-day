@@ -6,7 +6,12 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const exphbs = require('express-handlebars');
 const redis = require('redis');
-const client = redis.createClient(6379);
+if(process.env.NODE_ENV==='production'){
+  const client = redis.createClient(process.env.REDIS_URL);
+} else {
+  const client = redis.createClient(6379);
+}
+
 
 const indexRouter = require('./routes/index');
 
