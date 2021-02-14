@@ -1,5 +1,4 @@
-$(function() {
-    $(window).on('load', function() {       
+$(window).on('load', function() {       
         
         $('#container').removeClass('hidden');
         $('#loader').addClass('hidden'); 
@@ -33,5 +32,4 @@ $(function() {
             }
 
         }); 
-    });
 });
