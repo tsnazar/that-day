@@ -6,17 +6,18 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const exphbs = require('express-handlebars');
 const redis = require('redis');
-if(process.env.NODE_ENV==='production'){
-  const client = redis.createClient(process.env.REDIS_URL);
-} else {
-  const client = redis.createClient(6379);
-}
+
 
 
 const indexRouter = require('./routes/index');
 
 const app = express();
 
+if(process.env.NODE_ENV==='production'){
+  var client = redis.createClient(process.env.REDIS_URL);
+} else {
+  var client = redis.createClient(6379);
+}
 
 // TODO: Allow images from wiki
 app.use(helmet({
